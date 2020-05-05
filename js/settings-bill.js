@@ -42,6 +42,7 @@ function totalSettings() {
             else if (getBillType === "sms") {
                 smsTotals += totalSmsSetting;
                 totalSetting += totalSmsSetting;
+                
             }
         }
         

@@ -4,7 +4,7 @@ const smsCostSettingsElement = document.querySelector(".smsCostSetting");
 const warningLevelElement = document.querySelector(".warningLevelSetting");
 const criticalLevelElement = document.querySelector(".criticalLevelSetting");
 //references to the Totals
-const callTotalElement = document.querySelector(".callCostSetting");
+const callTotalElement = document.querySelector(".callTotalSettings");
 const smsTotalElement = document.querySelector(".smsTotalSettings");
 const totalElement = document.querySelector(".totalSettings");
 //get a reference to the add button
@@ -39,12 +39,12 @@ function totalSettings() {
                 totalSetting += totalCostSettings;
               
             }
+            else if (getBillType === "sms") {
+                smsTotals += totalSmsSetting;
+                totalSetting += totalSmsSetting;
+            }
         }
-        else if (getBillType === "sms") {
-            smsTotals += totalSmsSetting;
-            totalSetting += totalSmsSetting;
-            alert(getBillType);
-        }
+        
         innerScript();
         forColor(totalSetting, totalWarningLevel, totalCriticalLevel);
 

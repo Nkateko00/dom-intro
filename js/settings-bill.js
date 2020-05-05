@@ -1,12 +1,12 @@
 // get references to all the settings fields
 const callCostSettingsElement = document.querySelector(".callCostSetting");
 const smsCostSettingsElement = document.querySelector(".smsCostSetting");
-const warningLevelElement = document.querySelector(".warningLevel");
-const criticalLevelElement = document.querySelector(".criticalLevel");
+const warningLevelElement = document.querySelector(".warningLevelSetting");
+const criticalLevelElement = document.querySelector(".criticalLevelSetting");
 //references to the Totals
-const callTotalElement = document.querySelector(".callTotalSettings");
-const smsTotalElement = document.querySelector(".smsTotalsSettings");
-const totalElement = document.querySelector("totalSettings");
+const callTotalElement = document.querySelector(".callCostSetting");
+const smsTotalElement = document.querySelector(".smsTotalSettings");
+const totalElement = document.querySelector(".totalSettings");
 //get a reference to the add button
 const myAddBtn = document.querySelector(".addBillBtn");
 //get a reference to the 'Update settings' button
@@ -22,7 +22,7 @@ var smsTotals = 0;
 var totalSetting = 0;
 function settingsBill() {
     totalCostSettings =  Number(callCostSettingsElement.value);
-    totalSmsSetting = Number(smsCostSettingsElement.value);
+    totalSmsSetting =   Number(smsCostSettingsElement.value);
     totalWarningLevel = Number(warningLevelElement.value);
     totalCriticalLevel = Number(criticalLevelElement.value);
     forColor(totalSetting, totalWarningLevel, totalCriticalLevel);
@@ -37,11 +37,13 @@ function totalSettings() {
             if (getBillType === "call") {
                 callTotals += totalCostSettings;
                 totalSetting += totalCostSettings;
+              
             }
         }
         else if (getBillType === "sms") {
             smsTotals += totalSmsSetting;
             totalSetting += totalSmsSetting;
+            alert(getBillType);
         }
         innerScript();
         forColor(totalSetting, totalWarningLevel, totalCriticalLevel);

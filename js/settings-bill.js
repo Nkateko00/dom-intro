@@ -31,8 +31,8 @@ function settingsBill() {
 
 function totalSettings() {
     var billTypeRadioCheck = document.querySelector("input[name ='billItemTypeWithSettings']:checked");
-    if (billTypeRadioCheck) {
-        var getBillType = billTypeRadioCheck.value;
+    var getBillType = billTypeRadioCheck.value;
+        if (billTypeRadioCheck) {
         if (totalSetting < totalCriticalLevel) {
             if (getBillType === "call") {
                 callTotals += totalCostSettings;

@@ -1,7 +1,9 @@
+ 
  function billCalculation(){
+     var fullBill;
  function calculateBill(billStringValue){
     var billList = billStringValue.split(",");
-    fullBill=0;
+     fullBill = 0;
     //  * loop over all the entries in the the resulting list
     for(var i =0;i<billList.length;i++){
          var bill = billList[i].trim();
@@ -12,7 +14,7 @@
              fullBill+=0.75;
             }
 }
- }
+}
 function getTotal(){
     return fullBill
     //create a function which returns the total
@@ -21,4 +23,3 @@ return {
     calculateBill,getTotal
 }
  }
- 

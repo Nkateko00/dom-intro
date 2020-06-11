@@ -12,61 +12,46 @@ const myAddBtn = document.querySelector(".addBillBtn");
 //get a reference to the 'Update settings' button
 const myUpdateSettingsBtn = document.querySelector(".updateSettings");
 // create a variables that will keep track of all the settings
-var totalCostSettings = 0;
-var totalSmsSetting = 0;
-var totalWarningLevel = 0;
-var totalCriticalLevel = 0;
-// create a variables that will keep track of all three totals.
-var callTotals = 0;
-var smsTotals = 0;
-var totalSetting = 0;
+var billSettings = theBillWithSettings();
+
 function settingsBill() {
-    totalCostSettings =  Number(callCostSettingsElement.value);
-    totalSmsSetting =   Number(smsCostSettingsElement.value);
-    totalWarningLevel = Number(warningLevelElement.value);
-    totalCriticalLevel = Number(criticalLevelElement.value);
-    forColor(totalSetting, totalWarningLevel, totalCriticalLevel);
+    billSettings.setCallCost(Number(callCostSettingsElement.value));
+    billSettings.setSmsCost(Number(smsCostSettingsElement.value));
+    billSettings.setCriticalLevel(Number(warningLevelElement.value));
+    billSettings.setWarningLevel(Number(callCostSettingsElement.value));
+    forColor();
+
+
 }
 //add an event listener for when the 'Update settings' button is pressed
 
 function totalSettings() {
     var billTypeRadioCheck = document.querySelector("input[name ='billItemTypeWithSettings']:checked");
     var getBillType = billTypeRadioCheck.value;
-        if (billTypeRadioCheck) {
-        if (totalSetting < totalCriticalLevel) {
-            if (getBillType === "call") {
-                callTotals += totalCostSettings;
-                totalSetting += totalCostSettings;
-              
-            }
-            else if (getBillType === "sms") {
-                smsTotals += totalSmsSetting;
-                totalSetting += totalSmsSetting;
-                
-            }
-        }
-        
-        innerScript();
-        forColor(totalSetting, totalWarningLevel, totalCriticalLevel);
+
+    if (getBillType === "call") {
+        billSettings.makeCall();
+    }
+    else if (getBillType === "sms") {
+        billSettings.makeSms();
+
+
+    }
+    function forColor() {
+        callTotalElement.innerHTML = (billSettings.getTotalCallCost()).toFixed(2);
+        smsTotalElement.innerHTML = (billSettings.getTotalSmsCost()).toFixed(2);
+        totalElement.innerHTML = (billSettings.getTotalCost()).toFixed(2);
 
     }
 }
-    function forColor(fullTotal, latestWarning, latestDanger) {
-        totalElement.classList.remove("danger");
-        totalElement.classList.remove("warning");
-        if (fullTotal >= latestWarning && fullTotal < latestDanger) {
-            totalElement.classList.add("warning");
-        }
-        else if (fullTotal >= latestDanger) {
-            totalElement.classList.add("danger");
-        }
-    }
 
-    function innerScript() {
-        callTotalElement.innerHTML = callTotals.toFixed(2);
-        smsTotalElement.innerHTML = smsTotals.toFixed(2);
-        totalElement.innerHTML = totalSetting.toFixed(2);
 
-    }
-    myAddBtn.addEventListener("click", totalSettings);
-    myUpdateSettingsBtn.addEventListener("click", settingsBill);
+
+function forColor() {
+    totalElement.classList.remove("danger");
+    totalElement.classList.remove("warning");
+
+}
+
+myAddBtn.addEventListener("click", totalSettings);
+myUpdateSettingsBtn.addEventListener("click", settingsBill);

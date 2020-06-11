@@ -31,7 +31,6 @@ function  calculateBtn(){
     }
     //  * check if it is a call or an sms and add the right amount to the overall total
     //  * once done looping over all the entries - display the total onto the screen in the billTotal element
-
     function showColors(){
      billTotalElement.classList.remove("danger");
      billTotalElement.classList.remove("warning");

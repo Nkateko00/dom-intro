@@ -6,9 +6,30 @@ function theBillWithSettings() {
 
     var callCostTotal =0;
     var smsCostTotal = 0;
+    var grandTotal = 0;
+
+    function math(getBillType){
+        if(getBillType === "call"){
+            callCostTotal += theCallCost;
+            grandTotal += theCallCost;
+        }else if(getBillType=== "sms"){
+            smsCostTotal += theSmsCost;
+            grandTotal += theSmsCost;
+        }
+
+    }
+    function testLevel(){
+        if(grandTotal>=theWarningLevel && grandTotal<theCriticalLevel){
+            return "warning";
+        }
+        else if(grandTotal>= theCriticalLevel){
+            return "danger";
+        }
+
+    }
 
     function setCallCost(callCost){
-        theCallCost = callCost;
+        theCallCost = parseFloat(callCost);
         //use the variable (placeholder) created in the factory function
         //taking the value down this allows us to put any value in my test file
     }
@@ -19,20 +40,20 @@ function theBillWithSettings() {
     }
 
     function setSmsCost(smsCost){
-        theSmsCost = smsCost;
+        theSmsCost = Number(smsCost);
     }
 
     function getSmsCost() {
         return theSmsCost;
     }
     function setWarningLevel(warningLevel){
-        theWarningLevel = warningLevel;
+        theWarningLevel = Number(warningLevel);
     }
     function getWarningLevel(){
         return theWarningLevel;
     }
     function setCriticalLevel(criticalLevel){
-        theCriticalLevel = criticalLevel;
+        theCriticalLevel = Number(criticalLevel);
     }
     function getCriticalLevel(){
         return theCriticalLevel;
@@ -66,12 +87,21 @@ function theBillWithSettings() {
     }
     
     return {
-        getCallCost,setCallCost,
-        getSmsCost,setSmsCost,
-        getWarningLevel,setWarningLevel,
-        getCriticalLevel,setCriticalLevel,
-        makeCall,makeSms,
-        getTotalCallCost,getTotalSmsCost,
-        getTotalCost,theClassName
+        getCallCost,
+        setCallCost,
+        getSmsCost,
+        setSmsCost,
+        getWarningLevel,
+        setWarningLevel,
+        getCriticalLevel,
+        setCriticalLevel,
+        makeCall,
+        makeSms,
+        getTotalCallCost,
+        getTotalSmsCost,
+        getTotalCost,
+        theClassName,
+        math,
+        testLevel
     }
 }

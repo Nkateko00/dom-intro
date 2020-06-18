@@ -12,44 +12,36 @@ const myAddBtn = document.querySelector(".addBillBtn");
 //get a reference to the 'Update settings' button
 const myUpdateSettingsBtn = document.querySelector(".updateSettings");
 // create a variables that will keep track of all the settings
-var billSettings = theBillWithSettings();
+ var billSettings = theBillWithSettings() ;
 
 function settingsBill() {
-    billSettings.setCallCost(Number(callCostSettingsElement.value));
-    billSettings.setSmsCost(Number(smsCostSettingsElement.value));
-    billSettings.setCriticalLevel(Number(warningLevelElement.value));
-    billSettings.setWarningLevel(Number(callCostSettingsElement.value));
-    forColor();
+    billSettings.setCallCost(callCostSettingsElement.value);
+    //billSettings.getCallCost();
+    billSettings.setSmsCost(smsCostSettingsElement.value);
+    billSettings.setCriticalLevel(criticalLevelElement.value);
+    billSettings.setWarningLevel(warningLevelElement.value);
+    justColor();
+
 
 
 }
-//add an event listener for when the 'Update settings' button is pressed
-
+//add an event listener for when the 'Update settings' button is pressed 
 function totalSettings() {
     var billTypeRadioCheck = document.querySelector("input[name ='billItemTypeWithSettings']:checked");
     var getBillType = billTypeRadioCheck.value;
 
-    if (getBillType === "call") {
-        billSettings.makeCall();
-    }
-    else if (getBillType === "sms") {
-        billSettings.makeSms();
-
-
-    }
-    function forColor() {
+     billSettings.math(getBillType);
         callTotalElement.innerHTML = (billSettings.getTotalCallCost()).toFixed(2);
         smsTotalElement.innerHTML = (billSettings.getTotalSmsCost()).toFixed(2);
         totalElement.innerHTML = (billSettings.getTotalCost()).toFixed(2);
+        justColor();
 
     }
-}
-
-
-
-function forColor() {
+function justColor() {
     totalElement.classList.remove("danger");
     totalElement.classList.remove("warning");
+    totalElement.classList.add(billSettings.testLevel());
+
 
 }
 

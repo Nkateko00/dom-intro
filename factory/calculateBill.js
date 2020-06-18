@@ -1,7 +1,9 @@
  
  function billCalculation(){
      var fullBill;
- function calculateBill(billStringValue){
+     var theWarningLevel = 20;
+     var theCriticalLevel = 30;
+ function calculateTheBill(billStringValue){
     var billList = billStringValue.split(",");
      fullBill = 0;
     //  * loop over all the entries in the the resulting list
@@ -15,11 +17,20 @@
             }
 }
 }
+function testLevel(){
+     if(fullBill>=theWarningLevel && fullBill<CriticalLevel){
+        return "warning";
+     }else if(fullBill>=theCriticalLevel){
+        return "danger";
+     }
+}
 function getTotal(){
     return fullBill
     //create a function which returns the total
 }
 return { 
-    calculateBill,getTotal
+    calculateTheBill,
+    getTotal,
+    testLevel
 }
  }

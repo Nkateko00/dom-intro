@@ -22,8 +22,6 @@ function settingsBill() {
     billSettings.setWarningLevel(warningLevelElement.value);
     justColor();
 
-
-
 }
 //add an event listener for when the 'Update settings' button is pressed 
 function totalSettings() {

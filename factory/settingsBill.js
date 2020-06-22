@@ -9,13 +9,14 @@ function theBillWithSettings() {
     var grandTotal = 0;
 
     function math(getBillType) {
-        if (getBillType === "call") {
-            callCostTotal += theCallCost;
-            grandTotal += theCallCost;
-        } else if (getBillType === "sms") {
-            smsCostTotal += theSmsCost;
-            grandTotal += theSmsCost;
-        }
+        // if (getBillType === "call") {
+        //     callCostTotal += theCallCost;
+        //     grandTotal += theCallCost;
+        // } else if (getBillType === "sms") {
+        //     smsCostTotal += theSmsCost;
+        //     grandTotal += theSmsCost;
+        // }
+
 
     }
     function testLevel() {
@@ -59,27 +60,6 @@ function theBillWithSettings() {
     function getCriticalLevel() {
         return theCriticalLevel;
     }
-
-    function criticalLevel(){
-        /*
-        this function returns the point at which the criticalLevel is reached
-        This takes into account the grand Total cost which is sms + call line 90
-        This also takes into account the  criticalLevel that was returned line 60 && 57
-        */
-        return getTotalCost() >= getCriticalLevel;
-    }
-    function makeCall() {
-        if (!criticalLevel()) {
-            callCostTotal += theCallCost
-            //if its we haven't reached the critical level it will keep incrementing if we have it stops
-        }
-    }
-    function makeSms() {
-        if (!criticalLevel()) {
-             //if its we haven't reached the critical level it will keep incrementing if we have it stops
-            smsCostTotal += theSmsCost;
-        }
-    }
     function getTotalCallCost() {
         return callCostTotal;
 
@@ -90,7 +70,30 @@ function theBillWithSettings() {
     function getTotalCost() {
         return callCostTotal + smsCostTotal;
     }
- 
+    function criticalLevel(){
+        return getTotalCost() >= getCriticalLevel();
+        /*
+        this function returns the point at which the criticalLevel is reached
+        This takes into account the grand Total cost which is sms + call line 90
+        This also takes into account the  criticalLevel that was returned line 60 && 57
+        */
+       
+    }
+    function makeCall() {
+        if (!criticalLevel()) {
+            callCostTotal += theCallCost
+            grandTotal += theCallCost;
+            //if its we haven't reached the critical level it will keep incrementing if we have it stops
+        }
+    }
+    function makeSms() {
+        if (!criticalLevel()) {
+             //if its we haven't reached the critical level it will keep incrementing if we have it stops
+            smsCostTotal += theSmsCost;
+            grandTotal += theSmsCost;
+        }
+    }
+   
     
 
     return {

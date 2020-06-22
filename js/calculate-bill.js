@@ -7,6 +7,7 @@ const billTotalElementTime= document.querySelector(".total");
 //create the function that will be called when the calculate button is pressed
 var totalBill = billCalculation()
 function  calculateBill(){
+    totalBill.setString(billStringElement.value);
     innerText();
     showColors();
 }
@@ -20,7 +21,7 @@ function showColors() {
 }
 
 function innerText() {
-    billTotalElement.innerHTML = (totalBill.calculateTheBill()).toFixed(2);
-    totalBill.calculateTheBill(billStringValue);
+    billTotalElementTime.innerHTML = (totalBill.getTotal()).toFixed(2);
+ 
 }
 calculateBtnElement.addEventListener("click", calculateBill());

@@ -29,7 +29,7 @@ function theBillWithSettings() {
     }
 
     function setCallCost(callCost){
-        theCallCost = parseFloat(callCost);
+        theCallCost = Number(callCost);
         //use the variable (placeholder) created in the factory function
         //taking the value down this allows us to put any value in my test file
     }

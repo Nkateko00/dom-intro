@@ -28,8 +28,8 @@ function totalSettings() {
     var billTypeRadioCheck = document.querySelector("input[name ='billItemTypeWithSettings']:checked");
     var getBillType = billTypeRadioCheck.value;
 
-     billSettings.makeCall();
-     billSettings.makeSms();
+     billSettings.makeCall(getBillType);
+     billSettings.makeSms(getBillType)
         callTotalElement.innerHTML = (billSettings.getTotalCallCost()).toFixed(2);
         smsTotalElement.innerHTML = (billSettings.getTotalSmsCost()).toFixed(2);
         totalElement.innerHTML = (billSettings.getTotalCost()).toFixed(2);

@@ -8,17 +8,6 @@ function theBillWithSettings() {
     var smsCostTotal = 0;
     var grandTotal = 0;
 
-    function math(getBillType) {
-        // if (getBillType === "call") {
-        //     callCostTotal += theCallCost;
-        //     grandTotal += theCallCost;
-        // } else if (getBillType === "sms") {
-        //     smsCostTotal += theSmsCost;
-        //     grandTotal += theSmsCost;
-        // }
-
-
-    }
     function testLevel() {
         if (grandTotal >= theWarningLevel && grandTotal < theCriticalLevel) {
             return "warning";
@@ -77,21 +66,25 @@ function theBillWithSettings() {
         This takes into account the grand Total cost which is sms + call line 90
         This also takes into account the  criticalLevel that was returned line 60 && 57
         */
-       
+
     }
-    function makeCall() {
+    function makeCall(getCallType) {
+        if (getCallType === "call") {
         if (!criticalLevel()) {
             callCostTotal += theCallCost
             grandTotal += theCallCost;
             //if its we haven't reached the critical level it will keep incrementing if we have it stops
         }
     }
-    function makeSms() {
+    }
+    function makeSms(getSmsType) {
+        if(getSmsType === "sms"){
         if (!criticalLevel()) {
              //if its we haven't reached the critical level it will keep incrementing if we have it stops
             smsCostTotal += theSmsCost;
             grandTotal += theSmsCost;
         }
+    }
     }
    
     
@@ -111,7 +104,6 @@ function theBillWithSettings() {
         getTotalSmsCost,
         getTotalCost,
         criticalLevel,
-        math,
         testLevel
     }
 }

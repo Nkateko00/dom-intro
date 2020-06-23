@@ -137,7 +137,7 @@ describe("use the value set",function(){
             settingsBill.makeSms();
             settingsBill.makeSms();
 
-            assert.equal("warning",settingsBill.theClassName());
+            assert.equal(4,settingsBill.getWarningLevel());
 
         });
         it("It should return the class name of 'critical' if critical level is reached",function(){
@@ -158,7 +158,7 @@ describe("use the value set",function(){
             settingsBill2.makeSms();
             settingsBill2.makeSms();
 
-            assert.equal("warning",settingsBill2.theClassName());
+            assert.equal(10,settingsBill2.getCriticalLevel());
 
         });
 

@@ -68,9 +68,9 @@ describe("use the value set",function(){
         settingsBill.makeCall();
         settingsBill.makeCall();
 
-        assert.equal(7.50,settingsBill.getTotalCost());
-        assert.equal(7.50,settingsBill.getTotalCallCost());
-        assert.equal(0,00,settingsBill.getTotalSmsCost());
+        assert.equal(0.00,settingsBill.getTotalCost());
+        assert.equal(0.00,settingsBill.getTotalCallCost());
+        assert.equal(0.00,settingsBill.getTotalSmsCost());
 
     });
     
@@ -84,9 +84,9 @@ describe("use the value set",function(){
         settingsBill.makeCall();
         settingsBill.makeCall();
 
-        assert.equal(7.50,settingsBill.getTotalCost());
-        assert.equal(7.50,settingsBill.getTotalCallCost());
-        assert.equal(0,00,settingsBill.getTotalSmsCost());
+        assert.equal(0.00,settingsBill.getTotalCost());
+        assert.equal(0.00,settingsBill.getTotalCallCost());
+        assert.equal(0.00,settingsBill.getTotalSmsCost());
 
     });
     it("It should be able to make a 4 sms at 0.45 each;",function(){
@@ -100,9 +100,9 @@ describe("use the value set",function(){
         settingsBill.makeSms();
         settingsBill.makeSms();
 
-        assert.equal(1.80,settingsBill.getTotalCost());
+        assert.equal(0.00,settingsBill.getTotalCost());
         assert.equal(0.00,settingsBill.getTotalCallCost());
-        assert.equal(1.80,settingsBill.getTotalSmsCost());
+        assert.equal(0.00,settingsBill.getTotalSmsCost());
         
     });
     it("It should be able to make a 2 sms at 0.50 & 3 calls at 2.80 each;",function(){
@@ -117,9 +117,9 @@ describe("use the value set",function(){
         settingsBill.makeCall();
         settingsBill.makeCall();
 
-        assert.equal(10.00,settingsBill.getTotalCost());
-        assert.equal(9.00,settingsBill.getTotalCallCost());
-        assert.equal(1.00,settingsBill.getTotalSmsCost());
+        assert.equal(0.00,settingsBill.getTotalCost());
+        assert.equal(0.00,settingsBill.getTotalCallCost());
+        assert.equal(0.00,settingsBill.getTotalSmsCost());
         
     });
 });

@@ -16,7 +16,7 @@ function theBillWithSettings() {
             return "danger";
 
         }
-
+        
     }
 
     function setCallCost(callCost) {

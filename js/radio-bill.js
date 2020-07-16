@@ -4,25 +4,18 @@ const radioBillBtn = document.querySelector(".radioBillAddBtn");
 const callTotalTwoElement = document.querySelector(".callTotalTwo");
 const smsTotalTwoElement = document.querySelector(".smsTotalTwo");
 const totalTwoElement = document.querySelector(".totalTwo");
-var totalBillCounter =0;
-var smsTotalCounter = 0;
-var callTotalCounter =0;
-//add an event listener for when the add button is pressed
-function radioBill(){
+var fullRadioBill = theRadioBill();
+function radioBill() {
     const radioItemTypeElement = document.querySelector(".billItemTypeRadio:checked");
-    //needs to be executed in the event since radio button selection changes between the button being clicked
     var radioItemValue = radioItemTypeElement.value;
-    if(radioItemValue === "call"){
-        totalBillCounter += 2.75;
-        callTotalCounter += 2.75
-    }
-    else if(radioItemValue === "sms"){
-        totalBillCounter += 0.75;
-        smsTotalCounter += 0.75;
-    }
-    internalText();
-    showAllColors();
 
+    fullRadioBill.radioIncrement(radioItemValue);
+
+    callTotalTwoElement.innerHTML = (fullRadioBill.callTotal()).toFixed(2);
+    smsTotalTwoElement.innerHTML = (fullRadioBill.smsTotal()).toFixed(2);
+    totalTwoElement.innerHTML = (fullRadioBill.totalBill().toFixed(2));
+
+    showAllColors();
 }
 function showAllColors() {
     totalTwoElement.classList.remove("danger");
@@ -31,20 +24,10 @@ function showAllColors() {
     if (totalBillCounter >= 50) {
         totalTwoElement.classList.add("danger");
     }
-    else if (totalBillCounter < 50 && totalBillCounter >=30) {
+    else if (totalBillCounter < 50 && totalBillCounter >= 30) {
         totalTwoElement.classList.add("warning");
     }
 }
 
-function internalText(){
-    callTotalTwoElement.innerHTML = callTotalCounter.toFixed(2);
-    smsTotalTwoElement.innerHTML = smsTotalCounter.toFixed(2);
-    totalTwoElement.innerHTML = totalBillCounter.toFixed(2);
-    
-}
-radioBillBtn.addEventListener("click",radioBill);
+radioBillBtn.addEventListener("click", radioBill);
 
-//in the event listener get the value from the billItemTypeRadio radio buttons
-// * add the appropriate value to the running total
-// * add nothing for invalid values that is not 'call' or 'sms'.
-// * display the latest total on the screen

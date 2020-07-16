@@ -14,6 +14,7 @@ describe("using the calculate Bill Wigdet",function(){
             total.calculateBill("call,call,call,call,sms,sms,sms");
              assert.equal(13.25,total.getTotal());
     });
+    
 
 
 });

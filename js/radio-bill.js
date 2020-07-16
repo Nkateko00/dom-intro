@@ -14,19 +14,12 @@ function radioBill() {
     callTotalTwoElement.innerHTML = (fullRadioBill.callTotal()).toFixed(2);
     smsTotalTwoElement.innerHTML = (fullRadioBill.smsTotal()).toFixed(2);
     totalTwoElement.innerHTML = (fullRadioBill.totalBill().toFixed(2));
-
     showAllColors();
 }
 function showAllColors() {
     totalTwoElement.classList.remove("danger");
     totalTwoElement.classList.remove("warning");
-
-    if (totalBillCounter >= 50) {
-        totalTwoElement.classList.add("danger");
-    }
-    else if (totalBillCounter < 50 && totalBillCounter >= 30) {
-        totalTwoElement.classList.add("warning");
-    }
+    totalTwoElement.classList.add(fullRadioBill.showSetColors());
 }
 
 radioBillBtn.addEventListener("click", radioBill);

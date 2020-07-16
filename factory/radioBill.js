@@ -2,8 +2,10 @@ function theRadioBill() {
     var totalBillCounter = 0;
     var smsTotalCounter = 0;
     var callTotalCounter = 0;
+    var theWarningLevel = 30;
+    var theCriticalLevel = 50;
     function radioIncrement(radioItemValue) {
-        
+
         if (radioItemValue === "call") {
             totalBillCounter += 2.75;
             callTotalCounter += 2.75
@@ -21,13 +23,24 @@ function theRadioBill() {
     }
     function totalBill() {
         return callTotalCounter + smsTotalCounter;
-        
+
     }
 
-    return {
-        radioIncrement,
-        smsTotal,
-        callTotal,
-        totalBill
+    function showSetColors() {
+        if (totalBillCounter >= theWarningLevel && totalBillCounter < theCriticalLevel) {
+            return "warning";
+        } 
+        else if (totalBillCounter >= theCriticalLevel){
+            return "danger"; 
     }
+}
+  
+
+return {
+    radioIncrement,
+    smsTotal,
+    callTotal,
+    showSetColors,
+    totalBill
+}
 }
